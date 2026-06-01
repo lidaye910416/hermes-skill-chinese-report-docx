@@ -13,7 +13,7 @@ metadata:
 
 # Chinese Report Docx Generator
 
-生成中国公文/研究报告格式的 Word 文档。**技术实现依托 `docx-reader` skill**，本 skill 仅记录 jasonlee 的格式偏好。
+生成中国公文/研究报告格式的 Word 文档。**技术实现依托 `docx-reader` skill**，本 skill 仅记录用户的格式偏好。
 
 ## 格式参考（实测依据）
 
@@ -45,7 +45,7 @@ metadata:
 
 ---
 
-## jasonlee 格式偏好（必须严格遵守）
+## 格式偏好（必须严格遵守）
 
 | 元素 | 字体 | 字号 | 加粗 | 对齐 | 行距 |
 |------|------|------|------|------|------|
@@ -92,10 +92,10 @@ python3 /path/to/optimized-report-generator.py input.md ./imgs output.docx
 **正确流程**：
 ```bash
 # Step 1：先 cd 到期望的输出目录
-cd /Users/jasonlee/Downloads
+cd ~/Downloads
 
 # Step 2：然后执行脚本（output_path 写文件名即可）
-python3 /Users/jasonlee/.hermes/skills/productivity/chinese-report-docx/references/optimized-report-generator.py \
+python3 ~/.hermes/skills/productivity/chinese-report-docx/references/optimized-report-generator.py \
     /tmp/report.md ./imgs "最终文件名.docx"
 
 # Step 3：确认文件
@@ -105,8 +105,8 @@ ls -lh 最终文件名.docx
 **错误的做法**：
 ```bash
 # ❌ output_path 写绝对路径也无效（因为脚本内部 doc.save() 是相对路径）
-python3 ... /tmp/report.md ./imgs "/Users/jasonlee/Downloads/最终文件名.docx"
-# 实际输出在 cwd，而不是 /Users/jasonlee/Downloads/
+python3 ... /tmp/report.md ./imgs "~/Downloads/最终文件名.docx"
+# 实际输出在 cwd，而不是 ~/Downloads/
 ```
 
 ### Step 2：手动编写（如需定制）
@@ -380,8 +380,8 @@ with open('/tmp/updated_report.md', 'w') as f:
 ### Step 4：生成 Word
 
 ```bash
-python3 /Users/jasonlee/.hermes/skills/productivity/chinese-report-docx/references/optimized-report-generator.py \
-    /tmp/updated_report.md ./imgs "/Users/jasonlee/Desktop/报告_更新版.docx"
+python3 ~/.hermes/skills/productivity/chinese-report-docx/references/optimized-report-generator.py \
+    /tmp/updated_report.md ./imgs "~/Desktop/报告_更新版.docx"
 ```
 
 ---
